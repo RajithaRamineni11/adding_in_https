@@ -55,7 +55,6 @@ select customerid,unitprice,avg(unitprice) over(partition by CustomerID ORDER BY
 
 #Theoretical questions:
 
-
 # 1.Can you define a trigger that is invoked automatically before a new row is inserted into a table?
 Before inserting new data into table we can apply the before insert trigger .
 use usingimport;    #here I am using the usingimport database
@@ -182,6 +181,7 @@ select column_name from information_schema.columns
 select index_name from information_schema.statistics where table_schema='usingimport';
 
 # 4. Explain RDS and AWS key management services.
+Amazon RDS is a distributed relational database system
 Amazon RDS automatically integrates with AWS Key Management Service (AWS KMS) for key management. 
 	Amazon RDS uses envelope encryption.
 An AWS KMS key is a logical representation of a key. The KMS key includes metadata, 
