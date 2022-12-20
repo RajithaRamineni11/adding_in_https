@@ -1,3 +1,5 @@
+#sql Assignment on window functions and theory questions
+
 # 1. Calculate average Unit Price for each CustomerId.
 select customerID,unitprice,round(avg(unitprice),2)as average_unitprice 
 	from orders o 
