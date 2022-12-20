@@ -45,6 +45,12 @@ first_value(quantity) over(partition by od.ProductID order by quantity) firstval
  from order_details od
 	join products p on od.ProductID=p.ProductID;
 
+select orderid,od.productid,ProductName,quantity,
+nth_value(quantity,1) over(partition by od.ProductID order by quantity
+range between unbounded preceding and unbounded following) firstvalue 
+from order_details od
+	join products p on od.ProductID=p.ProductID;
+
 # 7. Calculate a cumulative moving average UnitPrice for each CustomerId.
 select customerid,unitprice,avg(unitprice) over(partition by CustomerID ORDER BY CustomerID
      ROWS BETWEEN 2 PRECEDING AND CURRENT ROW) moving_avg
@@ -182,6 +188,7 @@ select index_name from information_schema.statistics where table_schema='usingim
 
 # 4. Explain RDS and AWS key management services.
 Amazon RDS is a distributed relational database system
+
 Amazon RDS automatically integrates with AWS Key Management Service (AWS KMS) for key management. 
 	Amazon RDS uses envelope encryption.
 An AWS KMS key is a logical representation of a key. The KMS key includes metadata, 
