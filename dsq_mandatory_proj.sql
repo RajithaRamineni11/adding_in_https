@@ -27,8 +27,12 @@ from orders o join order_details od on o.orderid=od.orderid
 # 3. Rank Unit Price in descending order for each CustomerId.
 select customerid,unitprice,rank() over(partition by customerid order by unitprice desc) ranking from
 	order_details od join orders o on od.orderid=o.orderid;
+<<<<<<< HEAD
 select customerid,unitprice,dense_rank() over(partition by customerid order by unitprice desc) ranking from
 	order_details od join orders o on od.orderid=o.orderid;
+=======
+	#apply dense_rank for this question
+>>>>>>> fe95dd987f95140251f5122a48d2f8a2af86e327
 
 # 4. How can you pull the previous order date’s Quantity for each ProductId.
 select orderid,od.productid,ProductName,quantity,
