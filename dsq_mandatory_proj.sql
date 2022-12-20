@@ -27,6 +27,8 @@ from orders o join order_details od on o.orderid=od.orderid
 # 3. Rank Unit Price in descending order for each CustomerId.
 select customerid,unitprice,rank() over(partition by customerid order by unitprice desc) ranking from
 	order_details od join orders o on od.orderid=o.orderid;
+select customerid,unitprice,dense_rank() over(partition by customerid order by unitprice desc) ranking from
+	order_details od join orders o on od.orderid=o.orderid;
 
 # 4. How can you pull the previous order date’s Quantity for each ProductId.
 select orderid,od.productid,ProductName,quantity,
@@ -62,6 +64,7 @@ select customerid,unitprice,avg(unitprice) over(partition by CustomerID ORDER BY
 #Theoretical questions:
 
 # 1.Can you define a trigger that is invoked automatically before a new row is inserted into a table?
+
 Before inserting new data into table we can apply the before insert trigger .
 use usingimport;    #here I am using the usingimport database
 create table demotrigger(id int primary key auto_increment,
